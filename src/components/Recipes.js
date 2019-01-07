@@ -1,24 +1,33 @@
-import React from "react";
+import React from 'react';
+
+import { Link } from "react-router-dom";
 
 const Recipes = props => (
-    <div className="container">
+  <div className="container">
     <div className="row">
     { props.recipes.map((indivisual) => {
+      const recipe = indivisual.recipe;
       return (
-        <div key={indivisual.recipe.url} className="col-md-4" style={{ marginBottom:"2rem" }}>
+        <div key={recipe.url} className="col-md-4" style={{ marginBottom:"2rem" }}>
           <div className="recipes__box">
             <img 
               className="recipe__box-img" 
-              src={indivisual.recipe.image} 
-              alt={indivisual.recipe.url} />
+              src={recipe.image} 
+              alt={recipe.label}/>
               <div className="recipe__text">
                 <h5 className="recipes__title">
-                  {indivisual.recipe.label.length < 20 ? `${indivisual.recipe.label}` : `${indivisual.recipe.label.substring(0, 25)}...` }
+                  { recipe.label.length < 20 ? `${recipe.label}` : `${recipe.label.substring(0, 25)}...` }
                 </h5>
                 <p className="recipes__subtitle">Publisher: <span>
-                    {indivisual.recipe.source}
+                  { recipe.source }
                 </span></p>
               </div>
+              <button className="recipe_buttons">
+                <Link to={{ 
+                  pathname: `/recipe/${recipe.url}`,
+                  state: {recipe: recipe.label}
+                }}>View Recipe</Link>
+              </button>
           </div>
         </div>
       );
@@ -28,3 +37,24 @@ const Recipes = props => (
 );
 
 export default Recipes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
