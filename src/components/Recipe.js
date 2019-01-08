@@ -24,13 +24,13 @@ class Recipe extends React.Component{
       <div className="container">
         { this.state.activeRecipe.length !== 0 &&
           <div className="active-recipe">
-            <img className="active-recipe__img" src={this.state.activeRecipe.image} alt={this.state.activeRecipe.label}/>
-            <h3 className="active-recipe__title">{ this.state.activeRecipe.label }</h3>
+            <img className="active-recipe__img" src={this.state.activeRecipe.recipe.image} alt={this.state.activeRecipe.recipe.label}/>
+            <h3 className="active-recipe__title">{ this.state.activeRecipe.recipe.label }</h3>
             <h4 className="active-recipe__publisher">
-              Publisher: <span>{ this.state.activeRecipe.source }</span>
+              Publisher: <span>{ this.state.activeRecipe.recipe.source }</span>
             </h4>
             <p className="active-recipe__website">Website: 
-              <span><a href={this.state.activeRecipe.url}>{this.state.activeRecipe.url}</a></span>
+              <span><a href={this.state.activeRecipe.recipe.url}>{this.state.activeRecipe.recipe.url}</a></span>
             </p>
             <button className="active-recipe__button">
               <Link to="/">Go Home</Link>
